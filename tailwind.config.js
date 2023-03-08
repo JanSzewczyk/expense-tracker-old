@@ -6,8 +6,8 @@ module.exports = {
     "./node_modules/@szum-tech/design-system/{components,hooks,contexts}/**/*{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {}
   },
   plugins: [],
   presets: [require("@szum-tech/design-system/theme/main-preset")]
-}
+};
