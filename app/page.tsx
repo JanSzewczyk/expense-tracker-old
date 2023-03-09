@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="h-screen flex flex-col justify-center items-center">
@@ -6,6 +8,8 @@ export default function Home() {
         <p className="mt-8 typography-heading-5 text-typography-secondary">Let&apos;s</p>
         <p className="typography-heading-4">Track &apos;Em ALL</p>
         <p className="mt-10 typography-subtitle-1 text-typography-disabled ">App IN PROGRESS ...</p>
+
+        <Link href="/dashboard">dashboard</Link>
       </div>
     </main>
   );
