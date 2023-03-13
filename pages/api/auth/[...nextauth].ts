@@ -1,24 +1,20 @@
-import NextAuth, { AuthOptions } from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { FirestoreAdapter } from "@next-auth/firebase-adapter";
 import { cert } from "firebase-admin/app";
 
-// TODO figure out
+// TODO change this
 const serviceAccount = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS as string);
 
-// console.log(serviceAccount);
-
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!
     })
   ],
-  adapter: FirestoreAdapter({
-    // projectId: serviceAccount.project_id,
-    // storageBucket: serviceAccount.client_email
 
+  adapter: FirestoreAdapter({
     credential: cert({
       projectId: serviceAccount.project_id,
       clientEmail: serviceAccount.client_email,
@@ -26,11 +22,22 @@ export const authOptions: AuthOptions = {
     })
   }),
   pages: {
-    signIn: "/login"
+    signIn: "/login",
+    newUser: "/new-user"
   },
-  events: {
-    signIn: (message) => {
-      console.log(message);
+  session: {
+    strategy: "jwt"
+  },
+  callbacks: {
+    async jwt({ token }) {
+      return token;
+    },
+    async session({ session, token }) {
+      session.user = {
+        ...session.user,
+        id: token.sub as string
+      };
+      return session;
     }
   }
 };
