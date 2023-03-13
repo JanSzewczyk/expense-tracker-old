@@ -6,7 +6,7 @@ export default function NewUser() {
       NEW USER
       <p className="typography-heading-5">WELCOME</p>
       <div>
-        <Link href="/">Yes, I'm new user</Link>
+        <Link href="/">Yes, I&apos;m new user</Link>
       </div>
     </main>
   );
