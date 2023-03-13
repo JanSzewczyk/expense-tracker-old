@@ -1,6 +1,8 @@
 import "../styles/globals.css";
+
 import AppProviders from "@/components/AppProviders";
-import { getSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@api/auth/[...nextauth]";
 
 export const metadata = {
   title: "Expense Tracker",
@@ -9,8 +11,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const session = await getSession();
-
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en" className="dark">
       <body>

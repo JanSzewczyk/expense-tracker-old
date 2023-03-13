@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 type LoginPageProps = {
   searchParams: {
@@ -9,8 +9,6 @@ type LoginPageProps = {
 };
 
 export default function LoginPage({ searchParams }: LoginPageProps) {
-  const sesstion = useSession();
-  console.log(sesstion);
   return (
     <main className="h-screen flex items-center justify-center">
       <button
