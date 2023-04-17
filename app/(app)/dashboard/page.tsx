@@ -1,6 +1,8 @@
-import Logout from "@/components/Logout";
-import { authOptions } from "@api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
+
+import { authOptions } from "@api/auth/[...nextauth]/route";
+
+import Logout from "@/components/Logout";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
