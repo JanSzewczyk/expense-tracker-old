@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import { Avatar, Button } from "@szum-tech/design-system/components";
 
 export default function Home() {
