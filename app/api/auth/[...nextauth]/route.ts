@@ -3,7 +3,6 @@ import GoogleProvider from "next-auth/providers/google";
 import { FirestoreAdapter } from "@next-auth/firebase-adapter";
 import { cert } from "firebase-admin/app";
 
-// TODO change this
 const serviceAccount = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS as string);
 
 export const authOptions: NextAuthOptions = {
@@ -42,4 +41,6 @@ export const authOptions: NextAuthOptions = {
   }
 };
 
-export default NextAuth(authOptions);
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };
