@@ -1,8 +1,7 @@
 import "../styles/globals.css";
-
 import AppProviders from "@/components/AppProviders";
+import { authOptions } from "@api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@api/auth/[...nextauth]";
 
 export const metadata = {
   title: "Expense Tracker",
